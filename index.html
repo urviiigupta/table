@@ -1,0 +1,98 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.6.9/angular.min.js"></script>
+    <script src="script.js">
+        
+    </script>
+      <script>
+        // Get the modal
+      
+        </script>
+</head>
+<body>
+    
+    <div ng-app="myApp" ng-controller="myCtrl">
+    <div class="content">
+        {{objbill}}
+
+
+        
+        <br> <br>
+
+        ===========================from our server
+        {{tempdatareturn}}
+        ========end
+        <br/>
+
+        === fileterd data from server====
+        {{arritem}}
+        
+        <br>
+         Bill no <input type="number" ng-model="objbill.billno">  <button type="button" ng-click="getmybill()">Get Data</button> <br>
+         Date <input type="text" ng-model="objbill.billdate">  <br>
+         Customer <input type="text" ng-model="objbill.customer">  <br>
+         <br>
+         <button type="button" id="myBtn" onclick="openmodal()">Open Modal</button>
+         <div id="myModal" class="modal">
+
+            <!-- Modal content -->
+            <div class="modal-content">
+              <span class="close" onclick="spanclick()">&times;</span>
+              <table>
+                <tr ng-repeat="yy in arritem">
+                <td>
+                  <button type="button" ng-click="sitem(yy)">choose</button>
+                </td>
+                <td>
+                  {{yy.name}}
+                </td>
+                <td>
+                  {{yy.rate}}
+                </td>
+              </tr>
+              </table>
+            </div>
+          
+          </div>
+
+        
+            
+         <button type="button" id="btn" ng-click="addrows()">
+                +
+         </button>
+         <button type="button" id="btnsave" ng-click="savebill()">
+          Save My bill
+   </button>
+         <table>
+            <tr>
+                <td>Item</td>
+                <td>quantity</td>
+                <td>rate</td>
+                <td>amount</td>
+            </tr>
+            <tr ng-repeat="xx in objbill.arr">
+                <td><input type="text" ng-model="xx.icode">
+                      <button type="button" ng-click="openlist(xx)">A</button></td>
+                <td><input class="qty" ng-model="xx.qty" ng-blur="updateamount(xx)" type="text"></td>
+                <td><input class="rat" ng-model="xx.rate" ng-blur="updateamount(xx)" type="text"></td>
+                <td><input class="amt" ng-model="xx.amt" type="text"></td>
+            </tr>
+
+           
+            
+         </table>
+         <br>
+         <br>
+         <input type="text" ng-model="objbill.tq" >total quantity <br>
+         <input type="text" ng-model="objbill.ta"  > total price  <br>
+
+
+    </div>
+</div>
+    
+</body>
+</html>
